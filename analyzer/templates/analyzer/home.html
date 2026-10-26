@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+```
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>SkillGap AI</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f3f6fc;
+        margin: 0;
+        padding: 40px 20px;
+        color: #202b46;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        padding: 35px;
+        border-radius: 15px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 34px;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #69758b;
+        line-height: 1.6;
+    }
+
+    label {
+        display: block;
+        margin-top: 22px;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    input, textarea {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 13px;
+        border: 1px solid #d5dbea;
+        border-radius: 8px;
+        font-size: 15px;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 25px;
+        padding: 15px;
+        background: #315efb;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #2449d8;
+    }
+
+    .errorlist {
+        color: #c62828;
+    }
+
+    .hint {
+        color: #69758b;
+        font-size: 13px;
+        margin-top: 6px;
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<div class="container">
+
+    <h1>SkillGap AI 🚀</h1>
+
+    <p class="subtitle">
+        Discover how your technical skills align
+        with your target job.
+    </p>
+
+    <form
+        method="POST"
+        action="{% url 'analyze_resume' %}"
+        enctype="multipart/form-data"
+    >
+
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+
+        <label for="{{ form.candidate_name.id_for_label }}">
+            Candidate Name
+        </label>
+
+        {{ form.candidate_name }}
+
+        {{ form.candidate_name.errors }}
+
+        <label for="{{ form.resume_file.id_for_label }}">
+            Upload Resume
+        </label>
+
+        {{ form.resume_file }}
+
+        {{ form.resume_file.errors }}
+
+        <p class="hint">
+            Upload a text-based PDF resume up to 5 MB.
+        </p>
+
+        <label for="{{ form.job_description.id_for_label }}">
+            Job Description
+        </label>
+
+        {{ form.job_description }}
+
+        {{ form.job_description.errors }}
+
+        <button type="submit">
+            Analyze My Skills
+        </button>
+
+    </form>
+
+</div>
+```
+
+</body>
+
+</html>
